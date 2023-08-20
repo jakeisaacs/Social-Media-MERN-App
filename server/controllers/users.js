@@ -2,8 +2,11 @@ import User from "../models/User";
 
 /* READ */
 export const getUser = async (req, res) => {
+    console.log('getting user...');
     try {
+        console.log(req.params);
         const { id } = req.params;
+        console.log(id);
         const user = await User.findById(id);
         res.status(200).json(user);
     } catch (err) {
