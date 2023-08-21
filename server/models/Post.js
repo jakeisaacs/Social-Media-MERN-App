@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
     {
+        _id: String,
         userId: {
             type: String,
             required: true,
