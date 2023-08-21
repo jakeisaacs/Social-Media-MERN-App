@@ -30,6 +30,7 @@ const UserWidget = ({ userId, picturePath }) => {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
+        console.log(data);
         setUser(data);
     };
 
@@ -87,11 +88,11 @@ const UserWidget = ({ userId, picturePath }) => {
             {/* Second Row */}
             <Box p="1rem 0">
                 <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
-                    <LocationOnOutlined fontSzie="large" sx={{ color: main }} />
+                    <LocationOnOutlined fontSize="large" sx={{ color: main }} />
                     <Typography color={medium}>{location}</Typography>
                 </Box>
                 <Box display="flex" alignItems="center" gap="1rem">
-                    <WorkOutlineOutlined fontSzie="large" sx={{ color: main }} />
+                    <WorkOutlineOutlined fontSize="large" sx={{ color: main }} />
                     <Typography color={medium}>{occupation}</Typography>
                 </Box>
             </Box>
