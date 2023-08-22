@@ -21,8 +21,6 @@ const UserWidget = ({ userId, picturePath }) => {
     const medium = palette.neutral.medium;
     const main = palette.neutral.main;
 
-    console.log(`Bearer ${token}`);
-
     const getUser = async () => {
         const response = await fetch(`http://localhost:3001/users/${userId}`, 
         {
@@ -30,7 +28,6 @@ const UserWidget = ({ userId, picturePath }) => {
             headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
-        console.log(data);
         setUser(data);
     };
 
@@ -39,7 +36,6 @@ const UserWidget = ({ userId, picturePath }) => {
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     if (!user) {
-        console.log("Couldn't find user :/")
         return null;
     }
 
@@ -86,6 +82,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <Divider />
 
             {/* Second Row */}
+            
             <Box p="1rem 0">
                 <Box display="flex" alignItems="center" gap="1rem" mb="0.5rem">
                     <LocationOnOutlined fontSize="large" sx={{ color: main }} />
@@ -100,6 +97,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <Divider />
 
             {/* Third Row */}
+
             <Box p="1rem 0">
                 <FlexBetween mb="0.5rem">
                     <Typography>Who's viewed your profile?</Typography>
@@ -118,6 +116,7 @@ const UserWidget = ({ userId, picturePath }) => {
             <Divider />
 
             {/* Fourth Row */}
+
             <Box p="1rem 0">
                 <Typography fontSize="1rem" color={main} fontWeight="500" mb="1rem">
                     Social Profiles
