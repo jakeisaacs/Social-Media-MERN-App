@@ -6,6 +6,7 @@ export const createPost = async (req, res) => {
     try {
         const { userId, description, picturePath } = req.body;
         const user = await User.findById(userId);
+        console.log(user);
         const newPost = new Post({
             userId,
             firstName: user.firstName,
@@ -20,7 +21,7 @@ export const createPost = async (req, res) => {
         await newPost.save();
 
         const post = await Post.find();
-        req.status(201).json(post);
+        res.status(201).json(post);
     } catch (err) {
         res.status(409).json({ message: err.message });
     }
