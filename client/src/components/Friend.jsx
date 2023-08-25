@@ -16,17 +16,17 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     const { palette } = useTheme();
     const primaryLight = palette.primary.light;
     const primaryDark = palette.primary.dark;
-    const main = palette.primary.main;
-    const medium = palette.primary.medium;
+    const main = palette.neutral.main;
+    const medium = palette.neutral.medium;
 
     const isFriend = friends.find((friend) => friend._id === friendId);
 
     const patchFriend = async () => {
         const response = await fetch(
-            `http://localhost:3001/users/${id}/${friendId}`,
+            `http://localhost:3001/users/${_id}/${friendId}`,
             {
                 method : "PATCH",
-                header : {
+                headers : {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
@@ -40,8 +40,9 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         <FlexBetween>
             <FlexBetween gap="1rem">
                 <UserImage image={userPicturePath} size="55px" />
+                {/* Current solution to resolve updating screen if user navigates from friend to another friend */}
                 <Box
-                    //Current solution to resolve updating screen if user navigates from friend to another friend
+                    
                     onClick={() => {
                         navigate(`/profile/${friendId}`);
                         navigate(0);

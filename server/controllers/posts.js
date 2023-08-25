@@ -15,7 +15,7 @@ export const createPost = async (req, res) => {
             description,
             userPicturePath: user.picturePath,
             picturePath,
-            like: {},
+            likes: {},
             comments: [],
         });
         await newPost.save();
@@ -31,6 +31,7 @@ export const createPost = async (req, res) => {
 export const getFeedPosts = async (req, res) => {
     try {
         const post = await Post.find();
+        console.log(post);
         res.status(200).json(post);
     } catch (err) {
         res.status(404).json({ message: err.message });
@@ -40,7 +41,9 @@ export const getFeedPosts = async (req, res) => {
 export const getUserPosts = async (req, res) => {
     try {
         const { userId } = req.params;
+        console.log(userId);
         const post = await Post.find({ userId });
+        console.log(post);
         res.status(200).json(post);
     } catch (err) {
         res.status(404).json({ message: err.message });

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
-import PostWidget from '.PostWidget';
+import PostWidget from './PostWidget';
 
 const PostsWidget = ({ userId, isProfile = false }) => {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     };
 
     const getUserPosts = async () => {
-        const response = await fetch(`http:localhost:3001/posts/${usedId}`, {
+        const response = await fetch(`http:localhost:3001/posts/${userId}`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}`},
         });
@@ -50,16 +50,16 @@ const PostsWidget = ({ userId, isProfile = false }) => {
                     comments,
                 }) => (
                     <PostWidget
-                    key = {_id}
-                    postId = {_id}
-                    postUserId = {userId}
-                    name = {`${firstName} ${lastName}`}
-                    description = {description}
-                    location = {location}
-                    picturePath = {picturePath}
-                    userPicturePath = {userPicturePath}
-                    likes = {likes}
-                    comments = {comments}
+                        key = {_id}
+                        postId = {_id}
+                        postUserId = {userId}
+                        name = {`${firstName} ${lastName}`}
+                        description = {description}
+                        location = {location}
+                        picturePath = {picturePath}
+                        userPicturePath = {userPicturePath}
+                        likes = {likes}
+                        comments = {comments}
                     />
                 )
             )}
